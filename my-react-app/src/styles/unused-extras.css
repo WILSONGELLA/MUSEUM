@@ -1,0 +1,59 @@
+/* Not used on the current pages, kept from the original stylesheet */
+
+/* Pillars */
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-md);
+}
+.pillar {
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: var(--space-lg) 1.5rem;
+}
+.pillar i {
+  color: var(--accent-color);
+  font-size: 1.5rem;
+}
+.pillar h3 {
+  font-family: var(--heading-font);
+  font-weight: 400;
+  font-size: var(--font-lg);
+  margin: var(--space-md) 0 var(--space-sm);
+}
+.pillar p {
+  color: var(--text-muted);
+  line-height: 1.6;
+  font-size: var(--font-sm);
+}
+
+/* Site QR code */
+.site-qr {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  margin-top: var(--space-lg);
+  padding: var(--space-lg);
+  border: 1px solid rgba(255, 249, 240, 0.25);
+  border-radius: var(--radius);
+}
+.site-qr h3 {
+  font-family: var(--heading-font);
+  font-weight: 400;
+  font-size: var(--font-xl);
+  line-height: 1.15;
+}
+.site-qr p {
+  margin-top: var(--space-sm);
+  color: rgba(255, 249, 240, 0.78);
+  line-height: 1.6;
+}
+
+@media (max-width: 640px) {
+  .site-qr {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: var(--space-md);
+  }
+}

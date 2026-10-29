@@ -1,0 +1,32 @@
+/* Filters + exhibits */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+.chip {
+  background: transparent;
+  color: var(--surface-color);
+  border: 1px solid rgba(255, 249, 240, 0.4);
+  border-radius: 999px;
+  padding: 0.45rem 1.1rem;
+  font: inherit;
+  font-size: var(--font-sm);
+  cursor: pointer;
+  transition: background-color 200ms, color 200ms;
+}
+.chip:hover {
+  background: rgba(255, 249, 240, 0.12);
+}
+.chip.active {
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+  color: var(--text-color);
+}
+
+/* ===== Added: region filter, clickable cards, exhibit pages ===== */
+.filter-bar { display: flex; flex-wrap: wrap; gap: var(--space-md) var(--space-lg); margin-bottom: var(--space-md); }
+.filter-bar .filters { margin-bottom: 0; align-items: center; }
+.filter-label { color: rgba(255, 249, 240, 0.7); font-size: var(--font-sm); letter-spacing: 0.08em; text-transform: uppercase; margin-right: var(--space-sm); }
+.exhibit-count { color: rgba(255, 249, 240, 0.7); font-size: var(--font-sm); margin-bottom: var(--space-md); }

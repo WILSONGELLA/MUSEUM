@@ -1,0 +1,182 @@
+/* Global: variables, reset, keyframes and styles shared by several components */
+
+:root {
+  /* Core colors */
+  --main-color: #5c3a21; /* deep narra-wood brown */
+  --accent-color: #c8962e; /* antique gold */
+
+  /* Backgrounds & text */
+  --bg-color: #f5ebdd; /* aged paper / parchment */
+  --surface-color: #fff9f0; /* cards, panels, exhibit boxes */
+  --text-color: #2b1d14; /* near-black brown */
+  --text-muted: #6b5646; /* captions, dates, secondary text */
+
+  /* Supporting colors */
+  --highlight-color: #1f4e79; /* flag blue, for links and buttons */
+  --alert-color: #a32a2a; /* flag red, use sparingly */
+  --border-color: #d9c7ae; /* soft tan for dividers */
+
+  /* Fonts */
+  --prim-font: Arial, sans-serif;
+  --heading-font: Georgia, "Times New Roman", serif;
+
+  /* Font sizes */
+  --font-sm: 0.875rem;
+  --font-base: 1rem;
+  --font-lg: 1.25rem;
+  --font-xl: 2rem;
+  --font-xxl: 3rem;
+
+  /* Spacing */
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+  --space-xl: 4rem;
+
+  /* Misc */
+  --radius: 6px;
+  --shadow: 0 2px 8px rgba(43, 29, 20, 0.15);
+  --max-width: 1100px;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Museum gallery wall: plaster texture + warm light from above */
+body {
+  font-family: var(--prim-font);
+  background-color: #efe3d0; /* gallery plaster */
+  background-image:
+    /* fine plaster grain */
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.36 0 0 0 0 0.23 0 0 0 0 0.13 0 0 0 0.09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+    /* soft vertical wash, like wall-washer lighting */
+    linear-gradient(180deg, #f6ecdc 0%, #ecdfca 100%);
+}
+
+/* Track-lighting glow at the top and a darker vignette at the edges */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 45% at 50% 0%, rgba(255, 238, 200, 0.55), transparent 70%),
+    radial-gradient(ellipse 120% 100% at 50% 40%, transparent 55%, rgba(70, 42, 20, 0.22) 100%);
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 3px;
+}
+
+
+@keyframes rise {
+  from {
+    transform: translateY(110%);
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+
+/* Sections */
+.section {
+  padding: var(--space-xl) 0;
+  color: var(--text-color);
+}
+.section-dark {
+  /* deep-toned gallery room with a soft spotlight */
+  background: radial-gradient(ellipse 60% 70% at 50% 0%, rgba(230, 201, 130, 0.14), transparent 70%), var(--main-color);
+  color: var(--surface-color);
+}
+.wrap {
+  width: min(100% - 3rem, var(--max-width));
+  margin: 0 auto;
+}
+.section-head {
+  max-width: 640px;
+  margin-bottom: var(--space-lg);
+}
+.section-head h2 {
+  font-family: var(--heading-font);
+  font-size: clamp(1.9rem, 4vw, var(--font-xxl));
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+.section-head h2 b {
+  color: var(--main-color);
+}
+.section-head p {
+  margin-top: var(--space-md);
+  line-height: 1.7;
+  color: var(--text-muted);
+  max-width: 60ch;
+}
+.section-dark .section-head p {
+  color: rgba(255, 249, 240, 0.78);
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 3rem 0;
+  }
+}
+
+
+.mainComponent {
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+/* Shared by featured cards, exhibit cards and exhibit pages */
+.mostPopular-exhibitLabel {
+  color: var(--highlight-color);
+  font-size: var(--font-sm);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.read-more {
+  display: inline-block;
+  margin-top: var(--space-md);
+  padding: 0;
+  color: var(--highlight-color);
+  font: inherit;
+  font-weight: 700;
+  text-decoration: none;
+}
+.read-more:hover {
+  text-decoration: underline;
+}

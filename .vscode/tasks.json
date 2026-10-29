@@ -1,0 +1,31 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Start Museum Website",
+            "type": "npm",
+            "script": "dev",
+            "path": "my-react-app",
+            "args": [
+                "--",
+                "--host",
+                "127.0.0.1",
+                "--port",
+                "5173",
+                "--strictPort"
+            ],
+            "isBackground": true,
+            "problemMatcher": {
+                "owner": "vite",
+                "pattern": {
+                    "regexp": "^$"
+                },
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": ".",
+                    "endsPattern": "http://127\\.0\\.0\\.1:5173/"
+                }
+            }
+        }
+    ]
+}

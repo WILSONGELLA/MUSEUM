@@ -1,0 +1,68 @@
+.ph-map-wrap { position: relative; }
+.ph-map {
+  height: 620px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  background: #d9e4e6;
+  isolation: isolate; /* keeps Leaflet's layers under the site header */
+  z-index: 0;
+}
+.ph-map-reset {
+  position: absolute;
+  z-index: 1;
+  top: 0.75rem;
+  right: 0.75rem;
+  padding: 0.45rem 0.9rem;
+  background: var(--surface-color);
+  color: var(--main-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  font: inherit;
+  font-size: var(--font-sm);
+  cursor: pointer;
+}
+.ph-map-reset:hover { background: var(--accent-color); color: var(--text-color); }
+.ph-map-reset:focus-visible { outline: 2px solid var(--main-color); outline-offset: 2px; }
+.ph-legend {
+  position: absolute;
+  z-index: 1;
+  left: 0.75rem;
+  bottom: 1.75rem;
+  display: flex;
+  gap: 0.9rem;
+  margin: 0;
+  padding: 0.4rem 0.8rem;
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  font-size: var(--font-sm);
+  list-style: none;
+}
+.ph-legend li { display: flex; align-items: center; gap: 0.4rem; }
+.ph-legend span { width: 0.75rem; height: 0.75rem; border-radius: 50%; }
+
+/* Numbered pins (the rank inside each island group) */
+.pin-wrap { background: none; border: 0; }
+.pin {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--c);
+  border: 2px solid #fff;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+  transition: transform 200ms ease, opacity 200ms ease;
+}
+.pin.dim { opacity: 0.45; transform: scale(0.7); }
+.pin.active { transform: scale(1.3); box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.7), 0 2px 8px rgba(0, 0, 0, 0.5); }
+.leaflet-marker-icon:focus-visible .pin { outline: 3px solid #000; outline-offset: 2px; }
+
+@media (max-width: 640px) {
+  .ph-map { height: 440px; }
+  .ph-legend { flex-wrap: wrap; gap: 0.4rem 0.8rem; }
+}
